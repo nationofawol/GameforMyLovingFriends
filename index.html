@@ -1,132 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>g's art portfolio</title>
-<! -- version 1 -- !>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+const { createServer } = require('node:http');
 
-<style>
-body {
-  font-family: 'Josefin Sans', sans-serif;
-  background: #b7008c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+const hostname = '127.0.0.1';
+const port = 3000;
 
-.home-container {
-  max-width: 400px;
-  text-align: center;
-}
+const server = createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
+});
 
-h1 {
-  color: white;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: #ffc399;
-  margin-bottom: 30px;
-}
-
-.nav-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.nav-btn {
-  display: block;
-  padding: 15px;
-  background: #fe8e3d;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 18px;
-  transition: 0.2s;
-}
-
-.nav-btn:hover {
-  background: #ff7a1a;
-}
-/* Dropdown container */
-.dropdown {
-  position: relative;
-}
-
-
-.fixed-side-image {
-  position: fixed;
-  left: 20px;
-  top: 75px;
-  width: 500px;
-  z-index: 1000;
-}
-
-/* Hide dropdown by default */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  background: #fe8e3d;
-  border-radius: 8px;
-  width: 100%;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-/* Dropdown links */
-.dropdown-content a {
-  display: block;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.dropdown-content a:hover {
-  background: #ff7a1a;
-}
-
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Make the main button look clickable */
-.dropdown > .nav-btn {
-  cursor: pointer;
-}
-
-</style>
-
-</head>
-<body>
-<img src="finalpixel.png" class="fixed-side-image">
-  <div class="home-container">
-    <h1>g's art block killer</h1>
-    <p class="subtitle">"What should we do?"</p>
-<div class="nav-buttons">
-    <div class="dropdown">
-  <a class="nav-btn">Choose a Task ▾</a>
-  <div class="dropdown-content">
-    <a href="tasks/easytasks.html">Easy Task</a>
-    <a href="tasks/mediumtasks.html">Medium Task</a>
-    <a href="tasks/hardtasks.html">Hard Task</a>
-  </div>
-</div>
-      <a href="list.html" class="nav-btn">List of Projects</a>
-      <a href="portfolio/reminisce.html" class="nav-btn">Find Inspiration</a>
-      <a href="newidea.html" class="nav-btn">Add an Idea</a>
-    </div>
-  </div>
-
-</body>
-</html>
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
