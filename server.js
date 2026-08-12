@@ -12,3 +12,10 @@ const server = createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+const express = require('express');
+const app = express();
+
+app.use(express.static('public')); // <-- this one line does it
+
+app.listen(3000);
